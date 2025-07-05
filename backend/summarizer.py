@@ -1,36 +1,36 @@
-from fastapi import FastAPI, Request
-from pydantic import BaseModel
-from fastapi.middleware.cors import CORSMiddleware
+# from fastapi import FastAPI, Request
+# from pydantic import BaseModel
+# from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+# app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Frontend origin
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["http://localhost:3000"],  # Frontend origin
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 
-# Just to confirm backend is running
-@app.get("/")
-def read_root():
-    return {"message": "Backend is working!"}
+# # Just to confirm backend is running
+# @app.get("/")
+# def read_root():
+#     return {"message": "Backend is working!"}
 
-# Define the structure of the incoming request
-class SummaryRequest(BaseModel):
-    youtube_url: str
+# # Define the structure of the incoming request
+# class SummaryRequest(BaseModel):
+#     youtube_url: str
 
-# Main API endpoint
-@app.post("/summarize")
-async def summarize(request: Request):
-    data = await request.json()
-    youtube_url = data.get("youtube_url")
-    print("Received URL:", youtube_url)
+# # Main API endpoint
+# @app.post("/summarize")
+# async def summarize(request: Request):
+#     data = await request.json()
+#     youtube_url = data.get("youtube_url")
+#     print("Received URL:", youtube_url)
 
-    result = await generate_summary(youtube_url)
-    return result
+#     result = await generate_summary(youtube_url)
+#     return result
 
 
 ##################
