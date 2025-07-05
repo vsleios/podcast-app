@@ -38,9 +38,11 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv("secrets.env")
+load_dotenv("/home/bill/Documents/podcast-app/secrets.env")
 
 api_key = os.getenv("API_KEY")
+
+print(api_key)
 
 import re
 import numpy as np
@@ -52,6 +54,8 @@ import hdbscan
 
 
 from youtube_transcript_api import YouTubeTranscriptApi
+
+print("os edw ok")
 
 def good_entry(text):
     text = text.strip(" -.,!@#$%^&*()_<>?:'/[]{}")
@@ -152,8 +156,9 @@ def parse_summary(text: str) -> dict:
 
 
 
-async def generate_summary(url: str) -> dict:
+def generate_summary(url: str) -> dict:
     video_id = url[32:]
+    print(video_id)
     metascript = YouTubeTranscriptApi.get_transcript(video_id)
 
 
@@ -268,4 +273,11 @@ async def generate_summary(url: str) -> dict:
 
 
     return d
+
+
+sum = generate_summary("https://www.youtube.com/watch?v=EPtU4JNATtM")
+
+print(sum["description"])
+print()
+print(sum["sections"])
 
