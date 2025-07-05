@@ -35,6 +35,13 @@
 
 ##################
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv("secrets.env")
+
+api_key = os.getenv("API_KEY")
+
 import re
 import numpy as np
 from google import genai
@@ -179,7 +186,7 @@ async def generate_summary(url: str) -> dict:
         chunks_txt.append(s)
 
 
-    client = genai.Client(api_key="AIzaSyDfvzp3mFhaGloYZNkCI6TQA4Xwj8hsS-I")
+    client = genai.Client(api_key=api_key)
 
     quo = len(chunks_txt)//100; res = len(chunks_txt) % 100
 
