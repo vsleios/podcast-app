@@ -42,7 +42,6 @@ load_dotenv("/home/bill/Documents/podcast-app/secrets.env")
 
 api_key = os.getenv("API_KEY")
 
-print(api_key)
 
 import re
 import numpy as np
@@ -55,7 +54,6 @@ import hdbscan
 
 from youtube_transcript_api import YouTubeTranscriptApi
 
-print("os edw ok")
 
 def good_entry(text):
     text = text.strip(" -.,!@#$%^&*()_<>?:'/[]{}")
@@ -235,7 +233,7 @@ def generate_summary(url: str) -> dict:
 
     cluster_labels = clusterer.fit_predict(emb_umap)  # -1 means noise/unassigned
 
-    print("edo ok")
+    
     clusters = reassign_noise_runs(cluster_labels, min_run_length=3)
 
     labels = []
