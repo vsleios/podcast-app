@@ -156,7 +156,7 @@ def parse_summary(text: str) -> dict:
 
 def generate_summary(url: str) -> dict:
     video_id = url[32:]
-    print(video_id)
+    
     metascript = YouTubeTranscriptApi.get_transcript(video_id)
 
 
@@ -273,7 +273,7 @@ def generate_summary(url: str) -> dict:
     return d
 
 
-sum = generate_summary("https://www.youtube.com/watch?v=EPtU4JNATtM")
+sum = generate_summary("https://www.youtube.com/watch?v=9V6tWC4CdFQ")
 
 print(sum["description"])
 print()
