@@ -1,1 +1,3 @@
 secrets.env
+.vscode/
+__pycache__/

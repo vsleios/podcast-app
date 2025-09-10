@@ -1,40 +1,3 @@
-# from fastapi import FastAPI, Request
-# from pydantic import BaseModel
-# from fastapi.middleware.cors import CORSMiddleware
-
-# app = FastAPI()
-
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["http://localhost:3000"],  # Frontend origin
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
-
-
-# # Just to confirm backend is running
-# @app.get("/")
-# def read_root():
-#     return {"message": "Backend is working!"}
-
-# # Define the structure of the incoming request
-# class SummaryRequest(BaseModel):
-#     youtube_url: str
-
-# # Main API endpoint
-# @app.post("/summarize")
-# async def summarize(request: Request):
-#     data = await request.json()
-#     youtube_url = data.get("youtube_url")
-#     print("Received URL:", youtube_url)
-
-#     result = await generate_summary(youtube_url)
-#     return result
-
-
-##################
-
 import os
 from dotenv import load_dotenv
 
@@ -124,32 +87,32 @@ Example:
 """
 
 
-def parse_summary(text: str) -> dict:
-    lines = text.strip().split("\n")
-    description = lines[0].strip()
-    sections = []
+# def parse_summary(text: str) -> dict:
+#     lines = text.strip().split("\n")
+#     description = lines[0].strip()
+#     sections = []
 
-    current_section = None
+#     current_section = None
 
-    for line in lines[1:]:
-        line = line.strip()
-        if line.startswith("**") and line.endswith("**"):
-            if current_section:
-                sections.append(current_section)
-            current_section = {
-                "title": line,  # keep the markdown **
-                "bullets": []
-            }
-        elif line.startswith("- ") and current_section:
-            current_section["bullets"].append(line)  # keep the markdown -
+#     for line in lines[1:]:
+#         line = line.strip()
+#         if line.startswith("**") and line.endswith("**"):
+#             if current_section:
+#                 sections.append(current_section)
+#             current_section = {
+#                 "title": line,  # keep the markdown **
+#                 "bullets": []
+#             }
+#         elif line.startswith("- ") and current_section:
+#             current_section["bullets"].append(line)  # keep the markdown -
 
-    if current_section:
-        sections.append(current_section)
+#     if current_section:
+#         sections.append(current_section)
 
-    return {
-        "description": description,
-        "sections": sections
-    }
+#     return {
+#         "description": description,
+#         "sections": sections
+#     }
 
 
 
@@ -267,15 +230,17 @@ def generate_summary(url: str) -> dict:
     res = re.sub(r"^=== SECTION \d+ ===\s*", "", response.text, flags=re.MULTILINE)
 
 
-    d = parse_summary(res)
+    # d = parse_summary(res)
 
 
-    return d
+    return res
 
 
-sum = generate_summary("https://www.youtube.com/watch?v=9V6tWC4CdFQ")
+# sum = generate_summary("https://www.youtube.com/watch?v=9V6tWC4CdFQ")
 
-print(sum["description"])
-print()
-print(sum["sections"])
+# print(sum["description"])
+# print()
+# print(sum["sections"])
+
+# print(sum)
 
