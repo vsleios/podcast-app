@@ -1,0 +1,11 @@
+flask
+flask-cors
+python-dotenv
+google-genai
+numpy
+scipy
+scikit-learn
+umap-learn
+hdbscan
+youtube-transcript-api
+requests

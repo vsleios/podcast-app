@@ -1,0 +1,4 @@
+secrets.env
+.vscode/
+__pycache__/
+podenv/
