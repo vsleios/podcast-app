@@ -9,3 +9,4 @@ umap-learn
 hdbscan
 youtube-transcript-api
 requests
+gunicorn
